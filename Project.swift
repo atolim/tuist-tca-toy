@@ -9,7 +9,14 @@ let project = Project(
       destinations: .iOS,
       product: .app,
       bundleId: "io.tuist.TuistTCAToy",
-      infoPlist: .default,
+      infoPlist: .extendingDefault(
+        with: [
+          "UILaunchScreen": [
+            "UIColorName": "",
+            "UIImageName": "",
+          ],
+        ]
+      ),
       sources: ["Projects/App/Sources/**"],
       resources: ["Projects/App/Resources/**"],
       dependencies: [
