@@ -29,8 +29,8 @@ public struct DiaryInputReducer {
     }
   }
   
-  @Dependency(\.calendarClient) var calendarClient
-  @Dependency(\.dismiss) var dismiss
+  @Dependency(\.calendarClient) private var calendarClient
+  @Dependency(\.dismiss) private var dismiss
   
   public var body: some ReducerOf<Self> {
     BindingReducer()

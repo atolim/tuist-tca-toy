@@ -9,6 +9,7 @@ let project = Project(
       destinations: .iOS,
       product: .app,
       bundleId: "io.tuist.TuistTCAToy",
+      deploymentTargets: .iOS("18.0"),
       infoPlist: .extendingDefault(
         with: [
           "UILaunchScreen": [
@@ -32,6 +33,7 @@ let project = Project(
       destinations: .iOS,
       product: .staticFramework,
       bundleId: "io.tuist.Presentation",
+      deploymentTargets: .iOS("18.0"),
       sources: ["Projects/Presentation/Sources/**"],
       dependencies: [
         .target(name: "Domain"),
@@ -45,6 +47,7 @@ let project = Project(
       destinations: .iOS,
       product: .staticFramework,
       bundleId: "io.tuist.Domain",
+      deploymentTargets: .iOS("18.0"),
       sources: ["Projects/Domain/Sources/**"],
       dependencies: [
         .external(name: "ComposableArchitecture")
@@ -56,6 +59,7 @@ let project = Project(
       destinations: .iOS,
       product: .staticFramework,
       bundleId: "io.tuist.Data",
+      deploymentTargets: .iOS("18.0"),
       sources: ["Projects/Data/Sources/**"],
       dependencies: [
         .target(name: "Domain"),
@@ -68,6 +72,7 @@ let project = Project(
       destinations: .iOS,
       product: .staticFramework,
       bundleId: "io.tuist.Core",
+      deploymentTargets: .iOS("18.0"),
       sources: ["Projects/Core/Sources/**"],
       dependencies: []
     ),
