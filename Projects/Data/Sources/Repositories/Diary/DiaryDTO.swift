@@ -18,7 +18,7 @@ struct DiaryDTO: Codable {
   func toDomain() -> DiaryEntity {
     let parsedDate = Self.dateFormatter.date(from: date) ?? Date()
     return DiaryEntity(
-      id: UUID(uuidString: id) ?? UUID(),
+      id: id,
       date: parsedDate,
       title: title,
       content: content
@@ -27,7 +27,7 @@ struct DiaryDTO: Codable {
 
   static func from(entity: DiaryEntity) -> DiaryDTO {
     DiaryDTO(
-      id: entity.id.uuidString,
+      id: entity.id,
       date: dateFormatter.string(from: entity.date),
       title: entity.title,
       content: entity.content

@@ -4,9 +4,9 @@ import Foundation
 @DependencyClient
 public struct DiaryClient: Sendable {
   public var createDiary: @Sendable (_ date: Date, _ title: String, _ content: String) async throws -> DiaryEntity
-  public var deleteDiary: @Sendable (_ id: UUID) async throws -> Void
+  public var deleteDiary: @Sendable (_ id: String) async throws -> Void
   public var fetchDiaries: @Sendable (_ date: Date) async throws -> [DiaryEntity]
-  public var updateDiary: @Sendable (_ id: UUID, _ date: Date, _ title: String, _ content: String) async throws -> DiaryEntity
+  public var updateDiary: @Sendable (_ id: String, _ date: Date, _ title: String, _ content: String) async throws -> DiaryEntity
 }
 
 extension DiaryClient: TestDependencyKey {
