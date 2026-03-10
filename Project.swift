@@ -61,9 +61,11 @@ let project = Project(
       bundleId: "io.tuist.Data",
       deploymentTargets: .iOS("18.0"),
       sources: ["Projects/Data/Sources/**"],
+      resources: [.folderReference(path: "Projects/Data/Resources/Mock")],
       dependencies: [
         .target(name: "Domain"),
-        .target(name: "Core")
+        .target(name: "Core"),
+        .external(name: "Alamofire")
       ]
     ),
     // Core Layer (Shared)
@@ -74,7 +76,9 @@ let project = Project(
       bundleId: "io.tuist.Core",
       deploymentTargets: .iOS("18.0"),
       sources: ["Projects/Core/Sources/**"],
-      dependencies: []
+      dependencies: [
+        .external(name: "Alamofire")
+      ]
     ),
   ]
 )

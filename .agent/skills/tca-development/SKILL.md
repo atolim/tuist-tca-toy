@@ -37,7 +37,7 @@ struct MyFeature {
 ```
 
 ## Layering Strategy
-
+예를 드
 1. **Domain**: 비즈니스 로직과 인터페이스 (의존성 최소화).
 2. **Data**: API 통신, DTO 매핑, 클라이언트의 실제 구현체 (LiveValue).
 3. **Presentation (FeatureUI)**: SwiftUI View와 Reducer.

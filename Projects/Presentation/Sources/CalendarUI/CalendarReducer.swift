@@ -30,7 +30,7 @@ public struct CalendarReducer {
     case diaryInput(DiaryInputReducer)
   }
   
-  @Dependency(\.calendarClient) var calendarClient
+  @Dependency(\.diaryClient) var diaryClient
   
   public var body: some ReducerOf<Self> {
     BindingReducer()
@@ -38,6 +38,9 @@ public struct CalendarReducer {
       switch action {
       case .binding:
         return .none
+//
+//      case .binding:
+//        return .none
         
       case .toggleCalendarExpanded:
         state.isCalendarExpanded.toggle()
@@ -45,15 +48,15 @@ public struct CalendarReducer {
         
       case .fetchDiaries:
         return .run { [date = state.selectedDate] send in
-          await send(.diariesResponse(Result { try await calendarClient.fetchDiaries(date) }))
+          await send(.diariesResponse(Result { try await diaryClient.fetchDiaries(date) }))
         }
         
       case let .diariesResponse(.success(diaries)):
         state.diaries = diaries
         return .none
         
-      case .diariesResponse(.failure):
-        // Handle error logging
+      case let .diariesResponse(.failure(error)):
+        print("❌ fetchDiaries 실패:", error)
         return .none
         
       case .floatingButtonTapped:

@@ -37,3 +37,15 @@ public struct DiaryInputView: View {
     }
   }
 }
+
+public struct APiResponse<T: Decodable>: Decodable {
+  let result: String
+  let status: String
+  let data: T
+  
+  public init(result: String, status: String, data: T) {
+    self.result = result
+    self.status = status
+    self.data = data
+  }
+}

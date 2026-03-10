@@ -20,7 +20,7 @@ public struct DiaryInputReducer {
   public enum Action: BindableAction {
     case binding(BindingAction<State>)
     case saveButtonTapped
-    case saveResponse(Result<Void, Swift.Error>)
+    case saveResponse(Result<DiaryEntity, Swift.Error>)
     case closeButtonTapped
     case delegate(Delegate)
     
@@ -29,7 +29,7 @@ public struct DiaryInputReducer {
     }
   }
   
-  @Dependency(\.calendarClient) private var calendarClient
+  @Dependency(\.diaryClient) private var diaryClient
   @Dependency(\.dismiss) private var dismiss
   
   public var body: some ReducerOf<Self> {
@@ -40,9 +40,8 @@ public struct DiaryInputReducer {
         return .none
         
       case .saveButtonTapped:
-        let newDiary = DiaryEntity(date: state.date, title: state.title, content: state.content)
-        return .run { send in
-          await send(.saveResponse(Result { try await calendarClient.saveDiary(newDiary) }))
+        return .run { [date = state.date, title = state.title, content = state.content] send in
+          await send(.saveResponse(Result { try await diaryClient.createDiary(date, title, content) }))
         }
         
       case .saveResponse(.success):

@@ -1,0 +1,24 @@
+{
+  "code": 200,
+  "message": "Success",
+  "data": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "date": "2026-03-10",
+      "title": "첫 번째 일기",
+      "content": "오늘은 TCA 프로젝트를 시작했다. 처음엔 낯설었지만 점점 익숙해지고 있다."
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "date": "2026-03-09",
+      "title": "두 번째 일기",
+      "content": "Tuist로 모듈 분리 구조를 잡았다. Domain, Data, Presentation 레이어가 명확히 나뉘어서 좋다."
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "date": "2026-03-08",
+      "title": "세 번째 일기",
+      "content": "Alamofire와 Dependency Injection을 연결하는 작업을 했다. APIService가 잘 동작한다."
+    }
+  ]
+}
