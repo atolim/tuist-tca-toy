@@ -4,9 +4,9 @@ import Core
 
 public enum DiaryEndpoint: Endpoint {
   case createDiary(date: Date, title: String, content: String)
-  case deleteDiary(id: Int)
+  case deleteDiary(id: String)
   case fetchDiaries(date: Date)
-  case updateDiary(id: Int, date: Date, title: String, content: String)
+  case updateDiary(id: String, date: Date, title: String, content: String)
   
   public var baseURL: String { "https://jsonplaceholder.typicode.com" }
   public var path: String {
@@ -14,7 +14,7 @@ public enum DiaryEndpoint: Endpoint {
     case .createDiary: return "/posts"
     case .deleteDiary(let id): return "/posts/\(id)"
     case .fetchDiaries(let date): return "/posts"
-    case .updateDiary(let id, let date, let title, let content): return "/posts/\(id)"
+    case .updateDiary(let id, _, _, _): return "/posts/\(id)"
     }
   }
   public var method: HTTPMethod {
