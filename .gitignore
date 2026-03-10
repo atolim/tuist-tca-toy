@@ -1,0 +1,63 @@
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+xcuserdata/
+
+## compatibility with Xcode 8 and earlier (ignoring not only the settings of clients but also the server-side ones)
+*.xcscmblueprint
+*.xccheckout
+
+## compatibility with Xcode 3 and earlier (ignoring not only the settings of clients but also the server-side ones)
+build/
+DerivedData/
+
+## Xcode 8 and earlier
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+## Other
+*.moved-aside
+*.xcuserstate
+
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+# Package.resolved
+# *.xcodeproj
+#
+# Xcode automatically generates this directory with a .xcworkspacedata file and workspace settings
+# when a project is opened.
+#
+# Xcode automatically generates this directory with a .xcworkspacedata file and workspace settings
+# when a project is opened.
+# This directory might be needed for the SPM dependency resolution to work properly #73
+
+# Tuist
+#
+*.xcodeproj/
+*.xcworkspace/
+Derived/
+Tuist/.build/
+.build/

@@ -1,0 +1,30 @@
+---
+trigger: always_on
+---
+
+# Project Rules & Conventions
+
+## 1. Architecture: TCA (The Composable Architecture)
+
+- **Single Source of Truth:** 모든 상태는 `State`에서 관리하며, `Action`을 통해서만 변경한다.
+- **Reducer Separation:** 각 Feature는 독립적인 Reducer를 가지며, 필요시 `Scope`를 통해 결합한다.
+- **Side Effects:** 외부 시스템(API, DB)과의 통신은 반드시 `Dependency`를 통해 수행하며, Reducer 내부에서는 `Effect`로 반환한다.
+
+## 2. Directory Structure & Layering
+
+- **Domain:** 순수 비즈니스 로직과 인터페이스만 포함 (의존성 최소화).
+- **Data:** API 통신, DTO 매핑, `Domain/Clients`의 실제 구현체(Live) 담당.
+- **Presentation:** (Presentation):\*\* UI(SwiftUI)와 Feature 로직(Reducer) 담당. `Sources/{Feature}UI` 형식으로 명명 (예: `Presentation/CounterUI`).
+
+## 3. Library Usage
+
+- **Network:** `Alamofire`를 직접 쓰지 않고 `Domain/Clients` 인터페이스를 거쳐 사용한다.
+- **Image:** `Kingfisher` 사용 시 `View` 레이어에서 직접 호출을 지양하고, 가능하면 공통 컴포넌트화하여 사용한다.
+- **Logging:** `Core` 모듈의 Logging 시스템을 사용하여 모든 에러와 주요 액션을 기록한다.
+
+## 4. Coding Style
+
+- **Spaces:** 모든 코드의 들여쓰기는 **2칸(2 spaces)**을 원칙으로 한다.
+- **Dependency Injection:** `@Dependency(\.clientName)` 방식을 준수한다.
+- **SwiftUI:** View는 최대한 작게 쪼개며, 로직은 Reducer로 밀어 넣는다.
+- **Client Definition:** `@DependencyClient`를 사용하여 클라이언트 인터페이스를 정의한다.
